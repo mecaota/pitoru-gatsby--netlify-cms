@@ -46,6 +46,22 @@ export const BlogPostTemplate = ({
   )
 }
 
+const Meta = ({ post }) => {
+  const origin = 'https://blog.pito.run';
+
+  return (
+    <Helmet
+      title={`${post.frontmatter.title} | Blog`}
+      meta={[
+        { name: 'description', content: post.frontmatter.description },
+        { property: 'og:title', content: post.frontmatter.title },
+        { property: 'og:description', content: post.frontmatter.description },
+        { property: 'og:image', content: `${origin}${post.frontmatter.image}` },
+      ]}
+    />
+  );
+};
+
 BlogPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
