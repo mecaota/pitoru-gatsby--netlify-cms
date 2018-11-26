@@ -12,6 +12,7 @@ export const BlogPostTemplate = ({
   description,
   tags,
   title,
+  image,
   helmet,
 }) => {
   const PostContent = contentComponent || Content
@@ -26,6 +27,8 @@ export const BlogPostTemplate = ({
               {title}
             </h1>
             <p>{description}</p>
+      <div className="full-width-image-container margin-top-0" style={{backgroundImage: `url(${!!image.childImageSharp ? image.childImageSharp.fluid.src : image})`,}}>
+</div>
             <PostContent content={content} />
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
@@ -51,6 +54,7 @@ BlogPostTemplate.propTypes = {
   contentComponent: PropTypes.func,
   description: PropTypes.string,
   title: PropTypes.string,
+  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   helmet: PropTypes.object,
 }
 
@@ -63,9 +67,18 @@ const BlogPost = ({ data }) => {
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
+        image={post.frontmatter.image}
         helmet={
           <Helmet
             titleTemplate="%s | Blog"
+            meta={[
+              { name: 'description', content: post.frontmatter.description },
+              { property: 'og:title', content: post.frontmatter.title },
+              { property: 'og:description', content: post.frontmatter.description },
+              { property: 'og:image', content: `${origin}${post.frontmatter.image}` },
+              { property: 'twitter:card', content: "summary" },
+              { property: 'twitter:site', content: "@mecaota" },
+            ]}
           >
             <title>{`${post.frontmatter.title}`}</title>
             <meta name="description" content={`${post.frontmatter.description}`} />
@@ -96,6 +109,13 @@ export const pageQuery = graphql`
         title
         description
         tags
+        image {
+          childImageSharp {
+            fluid(maxWidth: 2048, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }
