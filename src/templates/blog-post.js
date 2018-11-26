@@ -26,7 +26,6 @@ export const BlogPostTemplate = ({
               {title}
             </h1>
             <p>{description}</p>
-            <img src="post.frontmatter.images"></img>
             <PostContent content={content} />
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
@@ -46,22 +45,6 @@ export const BlogPostTemplate = ({
     </section>
   )
 }
-
-const Meta = ({ post }) => {
-  const origin = 'https://blog.pito.run';
-
-  return (
-    <Helmet
-      title={`${post.frontmatter.title} | Blog`}
-      meta={[
-        { name: 'description', content: post.frontmatter.description },
-        { property: 'og:title', content: post.frontmatter.title },
-        { property: 'og:description', content: post.frontmatter.description },
-        { property: 'og:image', content: `${origin}${post.frontmatter.image}` },
-      ]}
-    />
-  );
-};
 
 BlogPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
