@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'pitoruの多趣味日記++',
+    title: 'Gatsby + Netlify CMS Starter',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
