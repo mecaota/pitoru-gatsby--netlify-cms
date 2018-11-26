@@ -75,7 +75,7 @@ const BlogPost = ({ data }) => {
               { name: 'description', content: post.frontmatter.description },
               { property: 'og:title', content: post.frontmatter.title },
               { property: 'og:description', content: post.frontmatter.description },
-              { property: 'og:image', content: `${origin}${post.frontmatter.image}` },
+              { property: 'og:image', content: post.frontmatter.image },
               { property: 'twitter:card', content: "summary" },
               { property: 'twitter:site', content: "@mecaota" },
             ]}
