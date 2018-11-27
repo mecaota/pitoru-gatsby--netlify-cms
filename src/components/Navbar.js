@@ -1,6 +1,9 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faGithubSquare
+} from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'gatsby'
-import github from '../img/github-icon.svg'
 import logo from '../img/logo.png'
 
 const Navbar = () => (
@@ -31,9 +34,7 @@ const Navbar = () => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span className="icon">
-            <img src={github} alt="Github" />
-          </span>
+        <FontAwesomeIcon icon={faGithubSquare} size="2x"/>
         </a>
       </div>
     </div>
