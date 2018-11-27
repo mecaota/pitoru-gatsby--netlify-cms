@@ -67,21 +67,21 @@ const BlogPost = ({ data }) => {
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
-        image={post.frontmatter.image}
+        image={post.frontmatter.image.childImageSharp.fluid.src}
         helmet={
           <Helmet
             titleTemplate="%s | Blog"
             meta={[
+              { name: 'title', content: post.frontmatter.title },
               { name: 'description', content: post.frontmatter.description },
               { property: 'og:title', content: post.frontmatter.title },
               { property: 'og:description', content: post.frontmatter.description },
-              { property: 'og:image', content: post.frontmatter.image },
+              { property: 'og:image', content: post.frontmatter.image.childImageSharp.fluid.src },
               { property: 'twitter:card', content: "summary" },
               { property: 'twitter:site', content: "@mecaota" },
             ]}
           >
             <title>{`${post.frontmatter.title}`}</title>
-            <meta name="description" content={`${post.frontmatter.description}`} />
           </Helmet>
         }
         tags={post.frontmatter.tags}
