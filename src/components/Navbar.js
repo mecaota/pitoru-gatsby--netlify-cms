@@ -24,29 +24,24 @@ export default class Navbar extends React.Component {
       <nav className="navbar">
         <div className="container">
           <div className="navbar-brand">
-            <Link to="/" className="navbar-item">
-              <figure className="image">
-                <img src={logo} alt="多分ムーミン" width="28" height="28"/>
-              </figure>
-            </Link>
-            <Link to="#" role="button" className={this.state.toggle ? "navbar-burger is-active" : "navbar-burger"} onClick={this.func.bind(this)} data-target="navMenu" aria-label="menu" aria-expanded="false">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </Link>
-          </div>
-          <div id="navMenu" className={this.state.toggle ? "navbar-menu is-active" : "navbar-menu"}>
-            <div className="navbar-start">
-              <Link className="navbar-item" to="/about">
+            <div className="tabs is-boxed is-medium">
+              <li className=""><Link to="/" className="navbar-item">
+                <figure className="image">
+                  <img src={logo} alt="多分ムーミン" width="28" height="28"/>
+                </figure>
+              </Link></li>
+              <li className=""><Link className="navbar-item" to="/about">
                 About
-              </Link>
-              <Link className="navbar-item" to="/blog">
-                Blog
-              </Link>
-              <Link className="navbar-item" to="/products">
+              </Link></li>
+              <li className=""><Link className="navbar-item" to="/products">
                 Works
-              </Link>
+              </Link></li>
+              <li className=""><Link className="navbar-item" to="/blog">
+                Blog
+              </Link></li>
             </div>
+          </div>
+          <div className="navbar-menu">
             <div className="navbar-end">
               <a
                 className="navbar-item"
@@ -58,7 +53,6 @@ export default class Navbar extends React.Component {
               </a>
             </div>
           </div>
-    
         </div>
       </nav>
     )
