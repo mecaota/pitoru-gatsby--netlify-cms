@@ -2,10 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faAngleDoubleDown
-} from '@fortawesome/free-solid-svg-icons'
 
 export default class IndexPage extends React.Component {
   render() {
@@ -14,29 +10,37 @@ export default class IndexPage extends React.Component {
 
     return (
       <Layout>
-    <section class="heroimage">
-        <div class="hero is-medium is-fullheight">
-            <div class="hero-body">
-                <div class="container has-text-centered">
-                    <div class="columns">
-                        <div class="column is-half">
-                            <div class="notification opacity">
-                                <h2 class="subtitle">welcome.</h2>
-                                <h1 class="title"><strong>pito.run</strong></h1>
-                                <h2>But, I don't run.</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <section className="section">
+          <div className="container">
+            <div className="content">
+              <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
             </div>
-
-            <div class="hero-foot">
-                <div class="scroll-nav">
-                  <FontAwesomeIcon icon={faAngleDoubleDown} size="5x"/>
+            {posts
+              .map(({ node: post }) => (
+                <div
+                  className="content"
+                  style={{ border: '1px solid #333', padding: '2em 4em' }}
+                  key={post.id}
+                >
+                  <p>
+                    <Link className="has-text-primary" to={post.fields.slug}>
+                      {post.frontmatter.title}
+                    </Link>
+                    <span> &bull; </span>
+                    <small>{post.frontmatter.date}</small>
+                  </p>
+                  <p>
+                    {post.excerpt}
+                    <br />
+                    <br />
+                    <Link className="button is-small" to={post.fields.slug}>
+                      Keep Reading →
+                    </Link>
+                  </p>
                 </div>
-            </div>
-        </div>
-    </section>
+              ))}
+          </div>
+        </section>
       </Layout>
     )
   }

@@ -4,7 +4,6 @@ backend:
 
 media_folder: static/img
 public_folder: /img
-publish_mode: editorial_workflow
 
 collections:
   - name: "blog"
@@ -19,7 +18,6 @@ collections:
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
-      - {label: "Image", name: "image", widget: "image"}
 
   - name: "pages"
     label: "Pages"
